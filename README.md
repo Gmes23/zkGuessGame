@@ -8,7 +8,7 @@ There are two smart contracts, the token contract and the game contract.The ERC-
 #### Guessing Game Contract
 The guessing game contract stores a secret number. Players can guess the secret number by paying 0.001 ETH. If a player guesses the number correctly, they receive 80% of the contract value plus 100 ERC20 tokens. If they do not guess the correct number, the ETH value is added to the contract. The deploying account owns the contract, and only the owner can change the secret number. The game contract can be found at `https://goerli.explorer.zksync.io/address/0x37FF9F9887632E753DB43cBDC1B87650A54802fe`[https://goerli.explorer.zksync.io/address/0x37FF9F9887632E753DB43cBDC1B87650A54802fe] with current secret number being 1. This can be change in the `playGame.ts` script
 
-##### Events
+#### Events
 ```solidity
 Winner(address winner, uint256 amount): emitted when there is a winner.
 Loser(address loser, uint256 amount): emitted when the user loses.
@@ -23,7 +23,7 @@ Loser(address loser, uint256 amount): emitted when the user loses.
 
 
 ### Deployment
-To deploy make sure to npm install or yarn install in both the zkcoin-guessergame folder and zkguess foler
+To deploy make sure to `npm install` or `yarn install` in both the zkcoin-guessergame folder and zkguess foler
 - run `npm start` on the zkcoin-guessergame folder to launch the front end
 
 This project is hooked up to use the two zksync contracts needed, both are already launch on testnet along with two disposable wallets, so it should run right out the box.
@@ -34,7 +34,7 @@ If you wish to launch your own smart contracts.
 - Run `yarn hardhat deploy zksync --script deploy-zkGuessGame.ts` for the game contract each contract should log  their respective address on success
 - Both contracts are deployed to zkSync Testnet and should run on your [http://localhost:3000](http://localhost:3000)
 
-#### Frontend
+### Frontend
 The frontend is built using React. The UI is a single page to play the guessing game with a form to enter the guessed number.
 
 ### How to Play
@@ -53,12 +53,12 @@ Instead it best to follow the [consensys](https://consensys.net/diligence/blog/2
 To learn more about the technologies used in this project, check out the following resources:
 
 
-[zkSync](https://era.zksync.io/docs/dev/)
-[Solidity](https://docs.soliditylang.org/en/latest/)
-[Solidity learn by example](https://solidity-by-example.org/)
-[Hardhat](https://hardhat.org/docs)
-[TypeScript](https://www.typescriptlang.org/docs/handbook/intro.html)
-[React](https://react.dev/learn)
+⋅⋅*[zkSync](https://era.zksync.io/docs/dev/)
+⋅⋅*[Solidity](https://docs.soliditylang.org/en/latest/)
+⋅⋅*[Solidity learn by example](https://solidity-by-example.org/)
+⋅⋅*[Hardhat](https://hardhat.org/docs)
+⋅⋅*[TypeScript](https://www.typescriptlang.org/docs/handbook/intro.html)
+⋅⋅*[React](https://react.dev/learn)
 
 #### Acknowledgments 
 This project was created using the [zksync-cli](https://era.zksync.io/docs/api/tools/zksync-cli/) tool.
