@@ -3,10 +3,10 @@ This project is a simple guessing number game built on the zkSync Testnet using 
 
 ### Contract Details
 ERC-20 Token Contract
-There are two smart contracts, the token contract and the game contract.The ERC-20 token contract can be minted, and some tokens are pre-minted in the constructor. It can be found at address `0x8B6faF65e3104Fb471326636F60Fcf4657B88922` [https://goerli.explorer.zksync.io/address/0x8B6faF65e3104Fb471326636F60Fcf4657B88922#transactions]
+There are two smart contracts, the token contract and the game contract.The ERC-20 token contract can be minted, and some tokens are pre-minted in the constructor. It can be found at address `0x8B6faF65e3104Fb471326636F60Fcf4657B88922`[https://goerli.explorer.zksync.io/address/0x8B6faF65e3104Fb471326636F60Fcf4657B88922#transactions]
 
 #### Guessing Game Contract
-The guessing game contract stores a secret number. Players can guess the secret number by paying 0.001 ETH. If a player guesses the number correctly, they receive 80% of the contract value plus 100 ERC20 tokens. If they do not guess the correct number, the ETH value is added to the contract. The deploying account owns the contract, and only the owner can change the secret number. The game contract can be found at `https://goerli.explorer.zksync.io/address/0x37FF9F9887632E753DB43cBDC1B87650A54802fe` [https://goerli.explorer.zksync.io/address/0x37FF9F9887632E753DB43cBDC1B87650A54802fe] with current secret number being 1. This can be change in the `playGame.ts` script
+The guessing game contract stores a secret number. Players can guess the secret number by paying 0.001 ETH. If a player guesses the number correctly, they receive 80% of the contract value plus 100 ERC20 tokens. If they do not guess the correct number, the ETH value is added to the contract. The deploying account owns the contract, and only the owner can change the secret number. The game contract can be found at `https://goerli.explorer.zksync.io/address/0x37FF9F9887632E753DB43cBDC1B87650A54802fe`[https://goerli.explorer.zksync.io/address/0x37FF9F9887632E753DB43cBDC1B87650A54802fe] with current secret number being 1. This can be change in the `playGame.ts` script
 
 ##### Events
 ```solidity
@@ -53,12 +53,12 @@ Instead it best to follow the [consensys](https://consensys.net/diligence/blog/2
 To learn more about the technologies used in this project, check out the following resources:
 
 
-[zkSync] (https://era.zksync.io/docs/dev/)
-[Solidity] (https://docs.soliditylang.org/en/latest/)
-[Solidity learn by example] (https://solidity-by-example.org/)
-[Hardhat] (https://hardhat.org/docs)
-[TypeScript] (https://www.typescriptlang.org/docs/handbook/intro.html)
-[React] (https://react.dev/learn)
+[zkSync](https://era.zksync.io/docs/dev/)
+[Solidity](https://docs.soliditylang.org/en/latest/)
+[Solidity learn by example](https://solidity-by-example.org/)
+[Hardhat](https://hardhat.org/docs)
+[TypeScript](https://www.typescriptlang.org/docs/handbook/intro.html)
+[React](https://react.dev/learn)
 
 #### Acknowledgments 
 This project was created using the [zksync-cli](https://era.zksync.io/docs/api/tools/zksync-cli/) tool.
