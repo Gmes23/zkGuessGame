@@ -53,12 +53,12 @@ Instead it best to follow the [consensys](https://consensys.net/diligence/blog/2
 To learn more about the technologies used in this project, check out the following resources:
 
 
-⋅⋅*[zkSync](https://era.zksync.io/docs/dev/)
-⋅⋅*[Solidity](https://docs.soliditylang.org/en/latest/)
-⋅⋅*[Solidity learn by example](https://solidity-by-example.org/)
-⋅⋅*[Hardhat](https://hardhat.org/docs)
-⋅⋅*[TypeScript](https://www.typescriptlang.org/docs/handbook/intro.html)
-⋅⋅*[React](https://react.dev/learn)
+- **[zkSync](https://era.zksync.io/docs/dev/)**
+- **[Solidity](https://docs.soliditylang.org/en/latest/)**
+- **[Solidity learn by example](https://solidity-by-example.org/)**
+- **[Hardhat](https://hardhat.org/docs)**
+- **[TypeScript](https://www.typescriptlang.org/docs/handbook/intro.html)**
+- **[React](https://react.dev/learn)**
 
 #### Acknowledgments 
 This project was created using the [zksync-cli](https://era.zksync.io/docs/api/tools/zksync-cli/) tool.
