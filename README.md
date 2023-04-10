@@ -48,9 +48,9 @@ If you guessed correctly, you will receive 80% of the contract value plus 100 of
 `transfer()` is a function that transfers Ether from one account to another in Solidity. However, on the zkSync network, using `transfer()` is discouraged due to its high gas cost.
 As stated by zksync "any smart contract that uses transfer() or send() is taking a hard dependency on gas costs, because these functions forward a hardcoded amount of 2300 gas.
 1) fallback() function can consume more than 2300 gas, 
-2) opcode gas pricing can change in future version of Ethereum, and your contract will break". 
+2) opcode gas pricing can change in future version of Ethereum, and your contract will break." 
 
-Instead it best to follow the [consensys](https://consensys.net/diligence/blog/2019/09/stop-using-soliditys-transfer-now/) recommendation and stop using `transfer()` and `send()` altogethor in your code and switch to using `call()` method as shown in the zkGuessGame smart contract.
+Instead it's best to follow the [consensys](https://consensys.net/diligence/blog/2019/09/stop-using-soliditys-transfer-now/) recommendation and stop using `transfer()` and `send()` altogethor in your code and switch to using the `call()` method as shown in the zkGuessGame smart contract.
 ```typescript
   (bool success, ) = address(token).call(abi.encodeWithSignature("transfer(address,uint256)", msg.sender, tokens));
   require(success, "Token transfer failed");
