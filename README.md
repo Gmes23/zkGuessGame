@@ -1,5 +1,6 @@
 # Guessing Game on zkSync Testnet
 This project is a simple guessing number game built on the zkSync Testnet using TypeScript, Hardhat, Solidity, and React.
+Deployed on [vercel] (https://zk-guess-game-five.vercel.app/)
 
 ### Contract Details
 #### ERC-20 Token Contract
