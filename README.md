@@ -45,9 +45,29 @@ Wait for the transaction to be confirmed.
 If you guessed correctly, you will receive 80% of the contract value plus 100 of our ERC20 tokens. If you guessed incorrectly, your ETH value will be added to the contract.
 
 ### Why You Shouldn't Use transfer() in Smart Contracts and special Notes about zkSync
-`transfer()` is a function that transfers Ether from one account to another in Solidity. However, on the zkSync network, using `transfer()` is discouraged due to its high gas cost. This is because zkSync uses a Layer 2 scaling solution that relies on off-chain computation to minimize the amount of data that needs to be stored on-chain. As a result, every on-chain transaction requires significant computation, which translates to higher gas costs.
+`transfer()` is a function that transfers Ether from one account to another in Solidity. However, on the zkSync network, using `transfer()` is discouraged due to its high gas cost.
+As stated by zksync "any smart contract that uses transfer() or send() is taking a hard dependency on gas costs, because these functions forward a hardcoded amount of 2300 gas.
+1) fallback() function can consume more than 2300 gas, 
+2) opcode gas pricing can change in future version of Ethereum, and your contract will break". 
 
-Instead it best to follow the [consensys](https://consensys.net/diligence/blog/2019/09/stop-using-soliditys-transfer-now/) recommendation and stop using `transfer()` and `send()` altogethor in your code and switch to using `call()` method as shown in the zkGuessGame smart contract instead: This function has a much lower gas cost and ensures that transactions are fast and efficient, if you are worried about re-entry consensys has a great article that goes more in depth [here](https://consensys.net/diligence/blog/2019/09/stop-using-soliditys-transfer-now/)
+Instead it best to follow the [consensys](https://consensys.net/diligence/blog/2019/09/stop-using-soliditys-transfer-now/) recommendation and stop using `transfer()` and `send()` altogethor in your code and switch to using `call()` method as shown in the zkGuessGame smart contract.
+```sol
+    (bool success, ) = address(token).call(abi.encodeWithSignature("transfer(address,uint256)", msg.sender, tokens));
+    require(success, "Token transfer failed");
+    payable(msg.sender).call{value: prize, gas: gasleft() - 2000}("");
+    emit Winner
+```
+In our `play()` function in the smart contract when a player wins tokens and eth are transfer, ignoring the token transfer for now, we look at the payable execution
+```sol
+payable(msg.sender).call{value: prize, gas: gasleft() - 2000}(""):
+```
+This sends the prize amount in Ether to the winner's address using the call function, which allows the contract to send Ether to an address. The payable keyword is used to indicate that the function can receive Ether. The prize variable is the amount of Ether to be transferred, and `msg.sender` is the winner's address. The `gasleft()` function is used to determine how much gas is left in the transaction, and the `gas: gasleft() - 2000` part of the code ensures that enough gas is left for the function to complete successfully. Finally, the empty string `("")` is passed as a parameter to the call function. This function has a much lower gas cost and ensures that our transactions goes thru, if you are worried about re-entry consensys has a great article that goes more in depth [here](https://consensys.net/diligence/blog/2019/09/stop-using-soliditys-transfer-now/)
+
+```sol
+ (bool success, ) = address(token).call(abi.encodeWithSignature("transfer(address,uint256)", msg.sender, tokens));
+    require(success, "Token transfer failed");
+```
+In this part of the function when the player wins this transfers tokens from the game contract to the winner's address. `address(token)` is the address of the token contract, and transfer is the function that transfers tokens. The call function is used to execute this function on the token contract, with the arguments encoded as per the `abi.encodeWithSignature` function, verification of the smart contract is needed for this to work. The result of this call is a tuple, where the first element is a boolean indicating whether the call succeeded or not.
 
 ### Resources
 To learn more about the technologies used in this project, check out the following resources:
