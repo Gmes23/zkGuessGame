@@ -2,7 +2,7 @@
 This project is a simple guessing number game built on the zkSync Testnet using TypeScript, Hardhat, Solidity, and React.
 
 ### Contract Details
-ERC-20 Token Contract
+#### ERC-20 Token Contract
 There are two smart contracts, the token contract and the game contract.The ERC-20 token contract can be minted, and some tokens are pre-minted in the constructor. It can be found at address `0x8B6faF65e3104Fb471326636F60Fcf4657B88922`[https://goerli.explorer.zksync.io/address/0x8B6faF65e3104Fb471326636F60Fcf4657B88922#transactions]
 
 #### Guessing Game Contract
