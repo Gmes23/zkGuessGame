@@ -51,19 +51,19 @@ As stated by zksync "any smart contract that uses transfer() or send() is taking
 2) opcode gas pricing can change in future version of Ethereum, and your contract will break". 
 
 Instead it best to follow the [consensys](https://consensys.net/diligence/blog/2019/09/stop-using-soliditys-transfer-now/) recommendation and stop using `transfer()` and `send()` altogethor in your code and switch to using `call()` method as shown in the zkGuessGame smart contract.
-```sol
-    (bool success, ) = address(token).call(abi.encodeWithSignature("transfer(address,uint256)", msg.sender, tokens));
-    require(success, "Token transfer failed");
-    payable(msg.sender).call{value: prize, gas: gasleft() - 2000}("");
-    emit Winner
+```typescript
+  (bool success, ) = address(token).call(abi.encodeWithSignature("transfer(address,uint256)", msg.sender, tokens));
+  require(success, "Token transfer failed");
+  payable(msg.sender).call{value: prize, gas: gasleft() - 2000}("");
+  emit Winner
 ```
 In our `play()` function in the smart contract when a player wins tokens and eth are transfer, ignoring the token transfer for now, we look at the payable execution
-```sol
-payable(msg.sender).call{value: prize, gas: gasleft() - 2000}(""):
+```ts
+  payable(msg.sender).call{value: prize, gas: gasleft() - 2000}(""):
 ```
 This sends the prize amount in Ether to the winner's address using the call function, which allows the contract to send Ether to an address. The payable keyword is used to indicate that the function can receive Ether. The prize variable is the amount of Ether to be transferred, and `msg.sender` is the winner's address. The `gasleft()` function is used to determine how much gas is left in the transaction, and the `gas: gasleft() - 2000` part of the code ensures that enough gas is left for the function to complete successfully. Finally, the empty string `("")` is passed as a parameter to the call function. This function has a much lower gas cost and ensures that our transactions goes thru, if you are worried about re-entry consensys has a great article that goes more in depth [here](https://consensys.net/diligence/blog/2019/09/stop-using-soliditys-transfer-now/)
 
-```sol
+```typescript
  (bool success, ) = address(token).call(abi.encodeWithSignature("transfer(address,uint256)", msg.sender, tokens));
     require(success, "Token transfer failed");
 ```
